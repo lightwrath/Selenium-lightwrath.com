@@ -35,7 +35,27 @@ def projectLinks():
       except: 
          print(i, "link not detected for: ", links[i])
 
+#Function to submit information via the contact form.
+def sentContact(cName, cEmail, cSubject, cMessage):
+   nameTag = driver.find_element_by_name('Name')
+   emailTag = driver.find_element_by_name('E-mail')
+   subjectTag = driver.find_element_by_name('Subject')
+   messageTag = driver.find_element_by_name('Message')
+   sendButton = driver.find_element_by_name('SEND MESSAGE')
+   nameTag.send_keys(cName)
+   emailTag.send_keys(cEmail)
+   subjectTag.send_keys(cSubject)
+   messageTag.send_keys(cMessage)
+   time.sleep(1)
+   sendButton.click()
+   formSpreeReturn = WebDriverWait(driver, 10).until(expCon.presence_of_element_located((By.LINK_TEXT, "Return to original site")))
+   formSpreeReturn.click()
+
 #Main
+navBarSelector("Contact")
+time.sleep(2)
+sentContact("Selenium_Test", "lightwrath@live.com", "Selenium Test", "This is a test from Selenium")
+time.sleep(2)
 navBarSelector("Projects")
 time.sleep(2)
 projectLinks()
