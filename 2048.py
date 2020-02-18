@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 
 import time
 
-driver = webdriver.Firefox(executable_path="/mnt/RAID/personal/Code/Selenium/geckodriver")
+driver = webdriver.Firefox(executable_path="./geckodriver")
 
 def launch():
    driver.get('https://2048game.com/')
